@@ -16,7 +16,7 @@ type Topic = {
 
 const getTopics = async (): Promise<Topic[]> => {
   try {
-    const res = await fetch("http://localhost:3000/api/topics", {
+    const res = await fetch("https://crud.kaidenz.me/api/topics", {
       cache: "no-store",
     });
 

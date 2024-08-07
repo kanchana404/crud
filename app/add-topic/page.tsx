@@ -15,7 +15,7 @@ const Page = () => {
       return alert("Please fill in all fields.");
     }
     try {
-      const res = await fetch("http://localhost:3000/api/topics", {
+      const res = await fetch("https://crud.kaidenz.me/api/topics", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

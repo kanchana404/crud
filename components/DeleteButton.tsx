@@ -10,7 +10,7 @@ interface DeleteButtonProps {
 const DeleteButton: React.FC<DeleteButtonProps> = ({ id, onDelete }) => {
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/?id=${id}`, {
+      const res = await fetch(`https://crud.kaidenz.me/api/topics/?id=${id}`, {
         method: 'DELETE',
       });
 
