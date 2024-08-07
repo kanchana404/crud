@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import Router from "next/router";
+import Router from "next/navigation";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -21,35 +21,35 @@ const Page = () => {
         },
         body: JSON.stringify({
           title,
-          description
+          description,
         }),
       });
 
       if (res.ok) {
-        Router.push("/");
+        window.location.href = "/";
       } else {
         throw new Error("Failed to add topic");
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="p-6 w-full max-w-lg">
         <div className="flex justify-center items-center">
-          <Input 
-            className="w-3/4" 
-            placeholder="Title" 
-            onChange={(e) => setTitle(e.target.value)} 
+          <Input
+            className="w-3/4"
+            placeholder="Title"
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="flex justify-center items-center mt-3">
           <div className="flex-col w-2/3">
-            <Textarea 
-              placeholder="Type your message here." 
-              onChange={(e) => setDescription(e.target.value)} 
+            <Textarea
+              placeholder="Type your message here."
+              onChange={(e) => setDescription(e.target.value)}
             />
             <div className="flex justify-center mt-4">
               <Button onClick={handleSubmit}>Add Topic</Button>
