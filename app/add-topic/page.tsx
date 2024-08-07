@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Router from "next/navigation";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const Page = () => {
   const [title, setTitle] = useState("");
@@ -26,7 +27,10 @@ const Page = () => {
       });
 
       if (res.ok) {
-        window.location.href = "/";
+        Swal.fire("SweetAlert2 is working!").then(() => {
+          window.location.href = "/";
+        });;
+      
       } else {
         throw new Error("Failed to add topic");
       }
