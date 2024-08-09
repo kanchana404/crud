@@ -10,12 +10,12 @@ interface DeleteButtonProps {
 const DeleteButton: React.FC<DeleteButtonProps> = ({ id, onDelete }) => {
   const handleDelete = async () => {
     try {
-      const res = await fetch(`https://crud.kaidenz.me/api/topics/?id=${id}`, {
+      const res = await fetch(`https://crud.kaidenz.me//api/topics/?id=${id}`, {
         method: 'DELETE',
       });
 
       if (res.ok) {
-        Swal.fire("SweetAlert2 is working!");
+        Swal.fire("Title Deleted Successfully");
         onDelete(id);
       } else {
         throw new Error('Failed to delete topic');
