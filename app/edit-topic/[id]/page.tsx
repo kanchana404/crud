@@ -1,31 +1,50 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import React from 'react'
+import EditTopic from '@/components/EditTopic';
+import React from 'react';
 
-const page = (params:any) => {
+interface ParamsProps {
+  params: {
+    id: string;
+  }
+}
 
+interface Topic {
+  _id: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+const getTopic = async (id: string) => {
+  try {
+    const res = await fetch(`https://crud.kaidenz.me//api/topics/${id}`, {
+      cache: 'no-cache',
+    });
+    const data = await res.json();
+    return data; // Return the fetched data
+  } catch (error) {
+    console.log(error);
+    return null; // Return null in case of an error
+  }
+};
+
+const Page = async ({ params }: ParamsProps) => {
+  const gotTopic = await getTopic(params.id);
   
+
 
   return (
     <div>
-     <div className="flex justify-center items-center min-h-screen">
-      <div className="p-6 w-full max-w-lg">
-        <div className="flex justify-center items-center">
-          <Input className="w-3/4" placeholder="Title" />
-        </div>
-        <div className="flex justify-center items-center mt-3">
-          <div className="flex-col w-2/3">
-            <Textarea placeholder="Type your message here." />
-            <div className="flex justify-center mt-4">
-              <Button>Add Topic</Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <EditTopic 
+      
+      id={gotTopic.topic._id}
+      title={gotTopic.topic.title}
+      description={gotTopic.topic.description}
+      
+      />
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;

@@ -15,7 +15,7 @@ const Page = () => {
       return alert("Please fill in all fields.");
     }
     try {
-      const res = await fetch("https://crud.kaidenz.me/api/topics", {
+      const res = await fetch("https://crud.kaidenz.me//api/topics", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,8 +27,8 @@ const Page = () => {
       });
 
       if (res.ok) {
-        Swal.fire("SweetAlert2 is working!").then(() => {
-          window.location.href = "/";
+        Swal.fire("Title added successfully").then(() => {
+         window.location.href = "/";
         });;
       
       } else {
